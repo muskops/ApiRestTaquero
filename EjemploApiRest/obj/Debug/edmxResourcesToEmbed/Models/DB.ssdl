@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaqueroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Taquero.dbo.tacos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tacos">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="cantidad" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cantidad" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TaqueroModelStoreContainer">
+    <EntitySet Name="tacos" EntityType="Self.tacos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tacos].[id] AS [id], 
+    [tacos].[nombre] AS [nombre], 
+    [tacos].[cantidad] AS [cantidad]
+    FROM [dbo].[tacos] AS [tacos]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
